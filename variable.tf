@@ -1,7 +1,18 @@
-variable "instance_type_for_ec2" {
-    default = "t2.nano"                 
-}                                      
-
-variable "ec2_sg" {
-    default = "default"    
+variable "ingress_list" {
+    type = list
+    default = [{
+    description = "Allow port 80",
+    port = 80,
+    cidr_blocks = ["0.0.0.0/0"],
+  }]
 }
+
+variable "egress_list" {
+    type = list
+    default = [{
+    description = "Allow port 80 for egress",
+    port = 80,
+    cidr_blocks = ["0.0.0.0/0"],
+  }]
+}
+
